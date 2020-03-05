@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>symptom-form works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n    <mat-step [stepControl]=\"firstFormGroup\">\n        <ng-template matStepLabel>Info de Paciente</ng-template>\n        <section id=\"patient\" style=\"padding: 20px;\">\n              <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n                <mat-label>Paciente</mat-label>\n                <input matInput value=\"{{consulta.patient.name}}\" class=\"form-control\">\n              </mat-form-field>\n              <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n                <mat-label>Edad</mat-label>\n                <input matInput value=\"{{consulta.patient.age}}\" class=\"form-control\">\n              </mat-form-field>\n          \n              <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n                <mat-label>Gender</mat-label>\n                <select matNativeControl>\n                  <option value=\"Masculino\">Masculino</option>\n                  <option value=\"Femenino\">Femenino</option>\n                </select>\n              </mat-form-field>\n        </section>\n        \n      </mat-step>");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-mainmenu></app-mainmenu>\n<style>\n  .rg{\n    text-align: left !important;\n  }\n</style>\n\n<div class=\"container\">\n  <section id=\"doctors\">\n    <mat-list>\n      <h3 mat-subheader>Lista Doctores</h3>\n      <mat-list-item *ngFor=\"let dc of doctors\">\n        <mat-icon mat-list-icon>account_circle</mat-icon>\n        <h4 mat-line>{{dc.name}}</h4>\n        <p mat-line> {{dc.title}} </p>\n      </mat-list-item>\n      <mat-divider></mat-divider>\n    </mat-list>\n  </section>\n\n\n  <mat-vertical-stepper [linear]=\"isLinear\" #stepper>\n    \n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel>Agregar Sintoma</ng-template>\n      <form  [formGroup]=\"symForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Sintoma</mat-label>\n            <input matInput formControlName='symptom'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Intencidad</mat-label>\n            <input matInput formControlName='intencity'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n          <mat-label>zona</mat-label>\n            <input matInput formControlName='zone'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button class=\"align-middle\" mat-mini-fab color=\"primary\" (click)=\"setSymptom();\"> + </button>\n        </div>\n      </div>\n      </form>  \n    </mat-step>\n\n    <mat-step>\n      <ng-template matStepLabel>Agregar Signal</ng-template>\n      <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"SignalForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n            <mat-label>Nombre</mat-label>\n            <input matInput formControlName='name'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n            <mat-label>Medida</mat-label>\n            <input matInput formControlName='measure'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n            <mat-label>Unidad</mat-label>\n            <input matInput formControlName='units'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button mat-mini-fab color=\"primary\" (click)=\"setSignal();\"> + </button>\n        </div>\n      </div>\n      </form>  \n\n    </mat-step>\n\n    <mat-step [stepControl]=\"firstFormGroup\">\n      <ng-template matStepLabel>Info de Paciente</ng-template>\n      <section id=\"patient\" style=\"padding: 20px;\">\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Paciente</mat-label>\n              <input matInput value=\"{{consulta.patient.name}}\" class=\"form-control\">\n            </mat-form-field>\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Edad</mat-label>\n              <input matInput value=\"{{consulta.patient.age}}\" class=\"form-control\">\n            </mat-form-field>\n        \n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Gender</mat-label>\n              <select matNativeControl>\n                <option value=\"Masculino\">Masculino</option>\n                <option value=\"Femenino\">Femenino</option>\n              </select>\n            </mat-form-field>\n      </section>\n      \n    </mat-step>\n\n  </mat-vertical-stepper>\n\n\n\n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n    <h4>Sintomas</h4>\n    <ul>\n      <li *ngFor=\"let sym of consulta.symptoms\">\n        {{sym.symptom}}  {{sym.intencity}}   {{sym.zone}}  \n        <button mat-mini-fab color=\"primary\" (click)=\"rmSym(sym)\"> x </button>\n      </li>\n  </ul>\n</section>\n  \n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n  <h4>Signals</h4>\n\n  <ul style=\"list-style: none;margin:20px 0px;\">\n    <li *ngFor=\"let sig of consulta.signals\">\n        <p>{{sig.name}} /  {{sig.measure}} / {{sig.units}}</p>\n    </li>\n  </ul>\n\n</section>\n\n\n\n\n  \n\n\n\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-mainmenu></app-mainmenu>\n<style>\n  .rg{\n    text-align: left !important;\n  }\n</style>\n\n<div class=\"container\">\n\n\n  <mat-vertical-stepper [linear]=\"isLinear\" #stepper>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel *ngIf=\"consulta.symptoms.length==0\" >Agrega un sintoma para ver el listado de doctores</ng-template>\n      <button mat-button matStepperNext>Agrega Sintoma</button>\n      <ng-template matStepLabel *ngIf=\"consulta.symptoms.length>0\" >Listado de Doctores</ng-template>\n      <section id=\"doctors\">\n        <mat-list>\n          <mat-list-item *ngFor=\"let dc of doctors\">\n            <mat-icon mat-list-icon>account_circle</mat-icon>\n            <h4 mat-line>{{dc.name}}</h4>\n            <p mat-line> {{dc.title}} </p>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n        </mat-list>\n      </section>\n    </mat-step>\n    \n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel>Agregar Sintoma</ng-template>\n      <button mat-button matStepperPrevious>Ver Listado de Médicos</button>\n      <form  [formGroup]=\"symForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Sintoma</mat-label>\n            <input matInput formControlName='symptom'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Intencidad</mat-label>\n            <input matInput formControlName='intencity'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n          <mat-label>zona</mat-label>\n            <input matInput formControlName='zone'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button class=\"align-middle\" mat-mini-fab color=\"primary\" (click)=\"setSymptom();\"> + </button>\n        </div>\n      </div>\n      </form>  \n    </mat-step>\n\n\n    <mat-step [stepControl]=\"firstFormGroup\">\n    <form  [formGroup]=\"patientForm\">\n      <ng-template matStepLabel>Info de Paciente</ng-template>\n      <section id=\"patient\" style=\"padding: 20px;\">\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Paciente</mat-label>\n              <input matInput formControlName='name' class=\"form-control\">\n            </mat-form-field>\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Edad</mat-label>\n              <input matInput formControlName='age' class=\"form-control\">\n            </mat-form-field>\n        \n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Gender</mat-label>\n              <select matNativeControl formControlName='gender'>\n                <option value=\"Masculino\">Masculino</option>\n                <option value=\"Femenino\">Femenino</option>\n              </select>\n            </mat-form-field>\n      </section>\n      <button mat-flat-button color=\"accent\" (click)=\"setPatient();\">Actualizar</button>\n    </form>\n    </mat-step>\n\n  </mat-vertical-stepper>\n\n\n\n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n\n    <mat-list>\n      <h3 mat-subheader>Sintomas</h3>\n      <mat-list-item *ngFor=\"let sym of consulta.symptoms\">\n        <mat-icon mat-list-icon (click)=\"rmSym(sym)\">clear</mat-icon>\n        <h4 mat-line> {{sym.symptom}}</h4>\n        <p mat-line> {{sym.intencity}} </p>\n        <p mat-line> {{sym.zone}}  </p>\n      </mat-list-item>\n      <mat-divider></mat-divider>\n    </mat-list>\n\n</section>\n  \n\n\n\n\n  \n\n\n\n</div>\n");
 
 /***/ }),
 
@@ -1041,9 +1041,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/consulta.service */ "./src/app/services/consulta.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 
 
 
@@ -1057,15 +1055,20 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
         this.doctors = [];
     }
     ngOnInit() {
-        this.symForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
-            symptom: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
-            zone: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null),
-            intencity: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
+        this.symForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            symptom: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required),
+            zone: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null),
+            intencity: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required)
         });
-        this.SignalForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
-            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
-            measure: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null),
-            units: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
+        this.patientForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('Nombre', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required),
+            age: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('10'),
+            gender: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required)
+        });
+        this.SignalForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required),
+            measure: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null),
+            units: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required)
         });
         this.consulta = {
             patient: {
@@ -1106,35 +1109,29 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
         };
         const appoint = this.getCurrAppoinment();
         this.consultaService.setSymtom(appoint.pk, newsin).subscribe(response => {
+            newsin['pk'] = response.pk;
             this.consulta.symptoms.push(newsin);
             this.symForm.reset();
             this.getDoctors();
         });
     }
     rmSym(thSym) {
-        const inx = this.consulta.symptoms.indexOf(thSym);
-        this.consulta.symptoms.splice(inx, 1);
-        this.getDoctors();
+        this.consultaService.rmSymtom(thSym.pk).subscribe(response => {
+            const inx = this.consulta.symptoms.indexOf(thSym);
+            this.consulta.symptoms.splice(inx, 1);
+            this.getDoctors();
+        });
     }
-    setSignal() {
-        const newsignal = {
-            name: this.SignalForm.controls['name'].value,
-            measure: this.SignalForm.controls['measure'].value,
-            units: this.SignalForm.controls['units'].value
+    setPatient() {
+        const appoint = this.getCurrAppoinment();
+        const infop = {
+            name: this.patientForm.controls['name'].value,
+            age: this.patientForm.controls['age'].value,
+            gender: this.patientForm.controls['gender'].value
         };
-        this.consulta.signals.push(newsignal);
-        this.SignalForm.reset();
-    }
-    getDismissReason(reason) {
-        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].ESC) {
-            return 'by pressing ESC';
-        }
-        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].BACKDROP_CLICK) {
-            return 'by clicking on a backdrop';
-        }
-        else {
-            return `with: ${reason}`;
-        }
+        this.consultaService.setPatient(appoint.pk, infop).subscribe(response => {
+            console.log(response);
+        });
     }
 };
 NuevaconsultaComponent.ctorParameters = () => [
@@ -1480,6 +1477,18 @@ let ConsultaService = class ConsultaService {
             zona: syntom.zone
         };
         return this.http.post(url, data).pipe();
+    }
+    setPatient(consultapk, patient_info) {
+        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/setconsulta/';
+        const data = {
+            consultapk: consultapk,
+            patient_info: patient_info
+        };
+        return this.http.put(url, data).pipe();
+    }
+    rmSymtom(syntompk) {
+        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/addsintom/' + syntompk + '/';
+        return this.http.delete(url, {}).pipe();
     }
     addSintom(sintom) {
         this.consulta.sintoms.push(sintom);

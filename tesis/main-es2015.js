@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-mainmenu></app-mainmenu>\n\n<style>\n  .rg{\n    text-align: left !important;\n  }\n\n\n</style>\n\n<div class=\"container\">\n  <section id=\"doctors\">\n    <mat-list>\n      <h3 mat-subheader>Folders</h3>\n      <mat-list-item *ngFor=\"let dc of doctors\">\n        <mat-icon mat-list-icon>folder</mat-icon>\n        <h4 mat-line>{{dc.name}}</h4>\n        <p mat-line> {{dc.title}} </p>\n      </mat-list-item>\n      <mat-divider></mat-divider>\n    </mat-list>\n  </section>\n\n\n<mat-vertical-stepper [linear]=\"isLinear\" #stepper>\n  <mat-step [stepControl]=\"firstFormGroup\">\n    <ng-template matStepLabel>Info de Paciente</ng-template>\n    <section id=\"patient\" style=\"padding: 20px;\">\n          <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n            <mat-label>Paciente</mat-label>\n            <input matInput value=\"{{consulta.patient.name}}\" class=\"form-control\">\n          </mat-form-field>\n          <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n            <mat-label>Edad</mat-label>\n            <input matInput value=\"{{consulta.patient.age}}\" class=\"form-control\">\n          </mat-form-field>\n      \n          <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n            <mat-label>Gender</mat-label>\n            <select matNativeControl>\n              <option value=\"Masculino\">Masculino</option>\n              <option value=\"Femenino\">Femenino</option>\n            </select>\n          </mat-form-field>\n    </section>\n    \n  </mat-step>\n  <mat-step [stepControl]=\"secondFormGroup\">\n    <ng-template matStepLabel>Agregar Sintoma</ng-template>\n    <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"myForm\">\n      <div class=\"row\" >\n      <div class=\"col-lg-4 col-sm-12 col-md-4\">\n        <mat-form-field>\n        <mat-label>Sintoma</mat-label>\n          <input matInput formControlName='symptom'  class=\"form-control\">\n        </mat-form-field>\n      </div>\n      <div class=\"col-lg-4 col-sm-12 col-md-4\">\n        <mat-form-field>\n        <mat-label>Intencidad</mat-label>\n          <input matInput formControlName='intencity'  class=\"form-control\">\n        </mat-form-field>\n      </div>\n      <div class=\"col-lg-3 col-sm-12 col-md-3\">\n        <mat-form-field>\n        <mat-label>zona</mat-label>\n          <input matInput formControlName='zone'  class=\"form-control\">\n        </mat-form-field>\n      </div>\n      <div class=\"col-lg-1 col-sm-12 col-md-1\">\n        <button class=\"align-middle\" mat-mini-fab color=\"primary\" (click)=\"setSymptom();\"> + </button>\n      </div>\n    </div>\n    </form>  \n  </mat-step>\n  <mat-step>\n    <ng-template matStepLabel>Agregar Signal</ng-template>\n    <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"SignalForm\">\n      <div class=\"row\" >\n      <div class=\"col-lg-4 col-sm-12 col-md-4\">\n        <mat-form-field>\n          <mat-label>Nombre</mat-label>\n          <input matInput formControlName='name'  class=\"form-control\">\n        </mat-form-field>\n      </div>\n      <div class=\"col-lg-4 col-sm-12 col-md-4\">\n        <mat-form-field>\n          <mat-label>Medida</mat-label>\n          <input matInput formControlName='measure'  class=\"form-control\">\n        </mat-form-field>\n      </div>\n      <div class=\"col-lg-3 col-sm-12 col-md-3\">\n        <mat-form-field>\n          <mat-label>Unidad</mat-label>\n          <input matInput formControlName='units'  class=\"form-control\">\n        </mat-form-field>\n      </div>\n      <div class=\"col-lg-1 col-sm-12 col-md-1\">\n        <button mat-mini-fab color=\"primary\" (click)=\"setSignal();\"> + </button>\n      </div>\n    </div>\n    </form>  \n\n  </mat-step>\n</mat-vertical-stepper>\n\n\n\n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n    <h4>Sintomas</h4>\n    <div *ngFor=\"let sym of consulta.symptoms\">\n      {{sym.symptom}} /  {{sym.intencity}} /  {{sym.zone}} / \n      <button mat-mini-fab color=\"primary\" (click)=\"rmSym(sym)\"> x </button>\n    </div>\n</section>\n  \n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n  <h4>Signals</h4>\n\n  <ul style=\"list-style: none;margin:20px 0px;\">\n    <li *ngFor=\"let sig of consulta.signals\">\n        <p>{{sig.name}} /  {{sig.measure}} / {{sig.units}}</p>\n    </li>\n  </ul>\n\n</section>\n\n\n\n\n  \n\n\n\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-mainmenu></app-mainmenu>\n<style>\n  .rg{\n    text-align: left !important;\n  }\n</style>\n\n<div class=\"container\">\n  <section id=\"doctors\">\n    <mat-list>\n      <h3 mat-subheader>Lista Doctores</h3>\n      <mat-list-item *ngFor=\"let dc of doctors\">\n        <mat-icon mat-list-icon>account_circle</mat-icon>\n        <h4 mat-line>{{dc.name}}</h4>\n        <p mat-line> {{dc.title}} </p>\n      </mat-list-item>\n      <mat-divider></mat-divider>\n    </mat-list>\n  </section>\n\n\n  <mat-vertical-stepper [linear]=\"isLinear\" #stepper>\n    \n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel>Agregar Sintoma</ng-template>\n      <form  [formGroup]=\"symForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Sintoma</mat-label>\n            <input matInput formControlName='symptom'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Intencidad</mat-label>\n            <input matInput formControlName='intencity'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n          <mat-label>zona</mat-label>\n            <input matInput formControlName='zone'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button class=\"align-middle\" mat-mini-fab color=\"primary\" (click)=\"setSymptom();\"> + </button>\n        </div>\n      </div>\n      </form>  \n    </mat-step>\n\n    <mat-step>\n      <ng-template matStepLabel>Agregar Signal</ng-template>\n      <form (ngSubmit)=\"onSubmit()\" [formGroup]=\"SignalForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n            <mat-label>Nombre</mat-label>\n            <input matInput formControlName='name'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n            <mat-label>Medida</mat-label>\n            <input matInput formControlName='measure'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n            <mat-label>Unidad</mat-label>\n            <input matInput formControlName='units'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button mat-mini-fab color=\"primary\" (click)=\"setSignal();\"> + </button>\n        </div>\n      </div>\n      </form>  \n\n    </mat-step>\n\n    <mat-step [stepControl]=\"firstFormGroup\">\n      <ng-template matStepLabel>Info de Paciente</ng-template>\n      <section id=\"patient\" style=\"padding: 20px;\">\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Paciente</mat-label>\n              <input matInput value=\"{{consulta.patient.name}}\" class=\"form-control\">\n            </mat-form-field>\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Edad</mat-label>\n              <input matInput value=\"{{consulta.patient.age}}\" class=\"form-control\">\n            </mat-form-field>\n        \n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Gender</mat-label>\n              <select matNativeControl>\n                <option value=\"Masculino\">Masculino</option>\n                <option value=\"Femenino\">Femenino</option>\n              </select>\n            </mat-form-field>\n      </section>\n      \n    </mat-step>\n\n  </mat-vertical-stepper>\n\n\n\n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n    <h4>Sintomas</h4>\n    <ul>\n      <li *ngFor=\"let sym of consulta.symptoms\">\n        {{sym.symptom}}  {{sym.intencity}}   {{sym.zone}}  \n        <button mat-mini-fab color=\"primary\" (click)=\"rmSym(sym)\"> x </button>\n      </li>\n  </ul>\n</section>\n  \n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n  <h4>Signals</h4>\n\n  <ul style=\"list-style: none;margin:20px 0px;\">\n    <li *ngFor=\"let sig of consulta.signals\">\n        <p>{{sig.name}} /  {{sig.measure}} / {{sig.units}}</p>\n    </li>\n  </ul>\n\n</section>\n\n\n\n\n  \n\n\n\n</div>\n");
 
 /***/ }),
 
@@ -1041,45 +1041,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/consulta.service */ "./src/app/services/consulta.service.ts");
-/* harmony import */ var _services_getinteligence_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/getinteligence.service */ "./src/app/services/getinteligence.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _models_inteligence__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../models/inteligence */ "./src/app/models/inteligence.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _services_doctor_home_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/doctor-home.service */ "./src/app/services/doctor-home.service.ts");
-
-
-
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 
 
 
 
 
 let NuevaconsultaComponent = class NuevaconsultaComponent {
-    constructor(consultaService, modalService, inteligence, doctorhomeService) {
+    constructor(consultaService) {
         this.consultaService = consultaService;
-        this.modalService = modalService;
-        this.inteligence = inteligence;
-        this.doctorhomeService = doctorhomeService;
         this.isCollapsed = false;
         this.consulta = [];
-        this.sintoms = [];
         this.currConsulta = {};
-        this.izonas = _models_inteligence__WEBPACK_IMPORTED_MODULE_5__["ZONAS"];
-        this.bevelzonas = _models_inteligence__WEBPACK_IMPORTED_MODULE_5__["SUBZONAS"];
-        this.subzonaview = null;
-        this.sintomMeasures = [];
         this.doctors = [];
     }
     ngOnInit() {
-        this.myForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-            symptom: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required),
-            zone: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](null),
-            intencity: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required)
+        this.symForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            symptom: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            zone: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null),
+            intencity: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
         });
-        this.SignalForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
-            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required),
-            measure: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](null),
-            units: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required)
+        this.SignalForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            measure: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null),
+            units: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
         });
         this.consulta = {
             patient: {
@@ -1092,26 +1078,38 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
             info: {},
         };
         this.doctors = [];
-        this.addconsulta();
-        this.getisintoms();
+        this.setConsulta();
     }
     onSubmit() {
         return;
     }
+    setConsulta() {
+        this.consultaService.setConsulta().subscribe(response => {
+            localStorage.removeItem('appoinment');
+            localStorage.setItem('appoinment', JSON.stringify(response));
+        });
+    }
+    getCurrAppoinment() {
+        const appoinment = localStorage.getItem('appoinment');
+        const appoinmentjson = JSON.parse(appoinment);
+        return appoinmentjson;
+    }
     getDoctors() {
-        this.consultaService.getDoctors().subscribe(response => { this.doctors = response; });
+        const appoinment = this.getCurrAppoinment();
+        this.consultaService.getDoctors(appoinment.pk).subscribe(response => { this.doctors = response; });
     }
     setSymptom() {
         const newsin = {
-            symptom: this.myForm.controls['symptom'].value,
-            zone: this.myForm.controls['zone'].value,
-            intencity: this.myForm.controls['intencity'].value
+            symptom: this.symForm.controls['symptom'].value,
+            zone: this.symForm.controls['zone'].value,
+            intencity: this.symForm.controls['intencity'].value
         };
-        this.consulta.symptoms.push(newsin);
-        this.myForm.reset();
-        if (this.consulta.symptoms.length > 1) {
+        const appoint = this.getCurrAppoinment();
+        this.consultaService.setSymtom(appoint.pk, newsin).subscribe(response => {
+            this.consulta.symptoms.push(newsin);
+            this.symForm.reset();
             this.getDoctors();
-        }
+        });
     }
     rmSym(thSym) {
         const inx = this.consulta.symptoms.indexOf(thSym);
@@ -1127,49 +1125,20 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
         this.consulta.signals.push(newsignal);
         this.SignalForm.reset();
     }
-    getConsulta(pk) {
-        this.consultaService.getConsulta(pk).subscribe(response => { this.response = response; }, error => { this.response = error; });
-    }
-    addconsulta() {
-        const consulta = {};
-    }
-    getisintoms() {
-        this.inteligence.getIsintoms().subscribe(isintomas => {
-            this.isintomas = isintomas;
-        }, error => {
-            alert(error);
-        });
-    }
-    addsintom(content, isintom) {
-        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.closeResult = `Closed with: ${result}`;
-        }, (reason) => {
-            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        });
-    }
     getDismissReason(reason) {
-        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["ModalDismissReasons"].ESC) {
+        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].ESC) {
             return 'by pressing ESC';
         }
-        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["ModalDismissReasons"].BACKDROP_CLICK) {
+        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].BACKDROP_CLICK) {
             return 'by clicking on a backdrop';
         }
         else {
             return `with: ${reason}`;
         }
     }
-    seeSubzone(subzone) {
-        this.subzonaview = _models_inteligence__WEBPACK_IMPORTED_MODULE_5__["SUBZONAS"][subzone];
-    }
-    closeSubzone() {
-        this.subzonaview = null;
-    }
 };
 NuevaconsultaComponent.ctorParameters = () => [
-    { type: _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__["ConsultaService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] },
-    { type: _services_getinteligence_service__WEBPACK_IMPORTED_MODULE_3__["GetinteligenceService"] },
-    { type: _services_doctor_home_service__WEBPACK_IMPORTED_MODULE_7__["DoctorHomeService"] }
+    { type: _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__["ConsultaService"] }
 ];
 NuevaconsultaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1241,7 +1210,7 @@ let FormconsultaComponent = class FormconsultaComponent {
     }
     setConsulta(patient) {
         this.curpatient = patient;
-        this.consultaService.setConsulta(patient.pk).subscribe(response => {
+        this.consultaService.setConsulta().subscribe(response => {
             this.consulta = response;
         });
     }
@@ -1334,247 +1303,6 @@ MyappointmentsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], MyappointmentsComponent);
 
-
-
-/***/ }),
-
-/***/ "./src/app/models/inteligence.ts":
-/*!***************************************!*\
-  !*** ./src/app/models/inteligence.ts ***!
-  \***************************************/
-/*! exports provided: Isintom, Izona, ZONAS, SUBZONAS, SINTOMS, PATIENT, CONSULT, DIAGNOSTIC, MEDICATION, CUESTIONARY */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Isintom", function() { return Isintom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Izona", function() { return Izona; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZONAS", function() { return ZONAS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SUBZONAS", function() { return SUBZONAS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SINTOMS", function() { return SINTOMS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PATIENT", function() { return PATIENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONSULT", function() { return CONSULT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DIAGNOSTIC", function() { return DIAGNOSTIC; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MEDICATION", function() { return MEDICATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CUESTIONARY", function() { return CUESTIONARY; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-class Isintom {
-}
-class Izona {
-}
-const ZONAS = [
-    {
-        id: 1,
-        part: 'superior',
-        icon: null,
-        childs: [{ cols: 4, name: 'head', icon: 'head' }]
-    },
-    {
-        id: 2,
-        part: 'neck',
-        icon: null,
-        childs: [{ cols: 2, name: 'neck', icon: 'neck' }]
-    },
-    {
-        id: 3,
-        part: 'motrisUp',
-        icon: null,
-        childs: [
-            { cols: 1, name: 'hand', icon: 'hr' },
-            { cols: 1, name: 'arm', icon: 'right_arm' },
-            { cols: 1, name: 'shoulder', icon: 'rigth_uparm' },
-            { cols: 1, name: 'chest', icon: 'shoulder' },
-            { cols: 1, name: 'shoulder', icon: 'chest' },
-            { cols: 1, name: 'arm', icon: 'shoulder' },
-            { cols: 1, name: 'hand', icon: 'left_uparm' },
-            { cols: 1, name: 'brace', icon: 'left_arm' },
-            { cols: 1, name: 'brace', icon: 'left_hand' }
-        ]
-    },
-    {
-        id: 4,
-        part: 'tronco',
-        icon: null,
-        childs: [
-            { cols: 2, name: 'tronco', icon: 'tronco' }
-        ]
-    },
-    {
-        id: 5,
-        part: 'pelvico',
-        icon: null,
-        childs: [
-            { cols: 2, name: 'cadera', icon: 'cadera' },
-            { cols: 2, name: 'pelvis', icon: 'pelvis' },
-            { cols: 2, name: 'lcadera', icon: 'lcadera' }
-        ]
-    },
-    {
-        id: 6,
-        part: 'trendown',
-        icon: null,
-        childs: [
-            { cols: 4, name: 'Lleg', icon: 'rleg' },
-            { cols: 4, name: 'Rleg', icon: 'lleg' }
-        ]
-    }
-];
-const SUBZONAS = {
-    trendown: [
-        {
-            pk: 1,
-            name: 'pierna'
-        },
-        {
-            pk: 2,
-            name: 'rodilla'
-        },
-        {
-            pk: 3,
-            name: 'tobillo'
-        },
-        {
-            pk: 4,
-            name: 'pierna'
-        }
-    ],
-    superior: [
-        {
-            pk: 11,
-            name: 'ojos',
-        },
-        {
-            pk: 12,
-            name: 'boca'
-        },
-        {
-            pk: 13,
-            name: 'nariz'
-        },
-        {
-            pk: 14,
-            name: 'frontal'
-        },
-        {
-            pk: 15,
-            name: 'lateral'
-        },
-        {
-            pk: 16,
-            name: 'trasera'
-        }
-    ]
-};
-const SINTOMS = [
-    { id: 1,
-        name: 'dolor',
-        levels: [],
-        type: []
-    },
-];
-const PATIENT = {
-    pk: 1,
-    name: 'unamed',
-    age: 0,
-    gender: 'female'
-};
-const CONSULT = {
-    pk: 11,
-    patientpk: 1,
-    datestart: 'dd/mm/yyyy',
-    dateend: null,
-    status: 0,
-    general_conditions: ['pain head lateral few hours', 'temperature 37 cold sweat'],
-    sintoms: [
-        {
-            sintom: 'pain',
-            level: 'intence',
-            condition: '',
-            zone: ['head lateral'],
-            alteration: 'feel heat',
-            time: 'few hours',
-        },
-        {
-            sintom: 'temperature',
-            level: '37',
-            condition: '',
-            alteration: 'cold sweat',
-            time: 'few hours',
-        }
-    ],
-    keywords: ['bad nutrition', 'dizzy', 'hard breathing'],
-    questionary: [
-        {
-            question: 1,
-            answear: 'answear '
-        }
-    ]
-};
-const DIAGNOSTIC = {
-    pk: 111,
-    consultantpk: 11,
-    patientpk: 1,
-    diagnosis: ' Flu and throat\'s infection ',
-    recomendations: ''
-};
-const MEDICATION = {
-    pk: 1,
-    consultantpk: 11,
-    patientpk: 1,
-    list: [
-        {
-            medicine: 'ampiciline pills 500 mg',
-            periodicity: 'each 8 hours',
-            temporarity: '1 week',
-            dosis: 'one pill'
-        },
-        {
-            medicine: 'paracetamol caps 250 mg',
-            periodicity: 'each 6 hours',
-            temporarity: '2 weeks',
-            dosis: 'two caps'
-        },
-    ]
-};
-const CUESTIONARY = [
-    {
-        pk: 1,
-        kwords: ['pain', 'head', 'lateral frontal occipital', 'pediatric general'],
-        question: '¿Ha sentido sudoración fría?',
-        level: 2
-    },
-    {
-        pk: 2,
-        kwords: ['pain', 'head', 'lateral frontal occipital', 'pediatric general'],
-        question: '¿Alteraciones en su temperatura?',
-        level: 1
-    },
-    {
-        pk: 3,
-        kwords: ['pain', 'head', 'lateral frontal occipital', 'pediatric general'],
-        question: '¿Cómo ha sido su alimentación en las últimas 8 horas?',
-        level: 1
-    },
-    {
-        pk: 4,
-        kwords: ['pain', 'head', 'lateral frontal occipital', 'pediatric general'],
-        question: '¿Presenta molestias en alguna otra parte de la cabeza (ojos, nariz)?',
-        level: 1
-    },
-    {
-        pk: 5,
-        kwords: ['pain', 'head', 'lateral frontal occipital', 'general'],
-        question: '¿Padece de ipertención?',
-        level: 0
-    },
-    {
-        pk: 6,
-        kwords: ['pain', 'head', 'lateral frontal occipital', 'general'],
-        question: '¿Se a tomado alguna muestra de glucosa, recuerda el resultado?',
-        level: 0
-    },
-];
 
 
 /***/ }),
@@ -1729,19 +1457,27 @@ let ConsultaService = class ConsultaService {
         const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/getpatients/' + userprofile.upk + '/';
         return this.http.get(url).pipe();
     }
-    getDoctors() {
-        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/patient/doctors/';
+    getDoctors(appoinmentpk) {
+        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/patient/doctors/' + appoinmentpk + '/';
         return this.http.get(url).pipe();
     }
-    addConsulta() {
-        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/setconsulta/';
-        return this.http.post(url, {}).pipe();
-    }
-    setConsulta(patientpk) {
+    setConsulta() {
+        const user = localStorage.getItem('profile');
+        const userprofile = JSON.parse(user);
         const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/setconsulta/';
         const data = {
-            paciente: patientpk,
+            userapply: userprofile.upk,
             status: 0
+        };
+        return this.http.post(url, data).pipe();
+    }
+    setSymtom(consultapk, syntom) {
+        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'webapp/addsintom/' + consultapk + '/';
+        const data = {
+            consultapk: consultapk,
+            sintoma: syntom.symptom,
+            intensidad: syntom.intencity,
+            zona: syntom.zone
         };
         return this.http.post(url, data).pipe();
     }
@@ -1818,58 +1554,6 @@ DoctorHomeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         providedIn: 'root'
     })
 ], DoctorHomeService);
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/getinteligence.service.ts":
-/*!****************************************************!*\
-  !*** ./src/app/services/getinteligence.service.ts ***!
-  \****************************************************/
-/*! exports provided: GetinteligenceService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetinteligenceService", function() { return GetinteligenceService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-
-
-
-
-
-let GetinteligenceService = class GetinteligenceService {
-    constructor(http) {
-        this.http = http;
-        this.itchange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.userinfo = localStorage.getItem('access_token');
-        this.httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-                Authorization: 'JWT ' + this.userinfo
-            })
-        };
-    }
-    getIsintoms() {
-        const url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + 'it/isintom/';
-        return this.http.get(url, {}).pipe();
-    }
-};
-GetinteligenceService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
-], GetinteligenceService.prototype, "itchange", void 0);
-GetinteligenceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], GetinteligenceService);
 
 
 

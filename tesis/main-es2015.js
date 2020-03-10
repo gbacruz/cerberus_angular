@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-mainmenu></app-mainmenu>\n<style>\n  .rg{\n    text-align: left !important;\n  }\n</style>\n\n<div class=\"container\">\n\n\n  <mat-vertical-stepper [linear]=\"isLinear\" #stepper>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel *ngIf=\"consulta.symptoms.length==0\" >Agrega un sintoma para ver el listado de doctores</ng-template>\n      <button mat-button matStepperNext>Agrega Sintoma</button>\n      <ng-template matStepLabel *ngIf=\"consulta.symptoms.length>0\" >Listado de Doctores</ng-template>\n      <section id=\"doctors\">\n        <mat-list>\n          <mat-list-item *ngFor=\"let dc of doctors\">\n            <mat-icon mat-list-icon>account_circle</mat-icon>\n            <h4 mat-line>{{dc.name}}</h4>\n            <p mat-line> {{dc.title}} </p>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n        </mat-list>\n      </section>\n    </mat-step>\n    \n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel>Agregar Sintoma</ng-template>\n      <button mat-button matStepperPrevious>Ver Listado de Médicos</button>\n      <form  [formGroup]=\"symForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Sintoma</mat-label>\n            <input matInput formControlName='symptom'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Intencidad</mat-label>\n            <input matInput formControlName='intencity'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n          <mat-label>zona</mat-label>\n            <input matInput formControlName='zone'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button class=\"align-middle\" mat-mini-fab color=\"primary\" (click)=\"setSymptom();\"> + </button>\n        </div>\n      </div>\n      </form>  \n    </mat-step>\n\n\n    <mat-step [stepControl]=\"firstFormGroup\">\n    <form  [formGroup]=\"patientForm\">\n      <ng-template matStepLabel>Info de Paciente</ng-template>\n      <section id=\"patient\" style=\"padding: 20px;\">\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Paciente</mat-label>\n              <input matInput formControlName='name' class=\"form-control\">\n            </mat-form-field>\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Edad</mat-label>\n              <input matInput formControlName='age' class=\"form-control\">\n            </mat-form-field>\n        \n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Gender</mat-label>\n              <select matNativeControl formControlName='gender'>\n                <option value=\"Masculino\">Masculino</option>\n                <option value=\"Femenino\">Femenino</option>\n              </select>\n            </mat-form-field>\n      </section>\n      <button mat-flat-button color=\"accent\" (click)=\"setPatient();\">Actualizar</button>\n    </form>\n    </mat-step>\n\n  </mat-vertical-stepper>\n\n\n\n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n\n    <mat-list>\n      <h3 mat-subheader>Sintomas</h3>\n      <mat-list-item *ngFor=\"let sym of consulta.symptoms\">\n        <mat-icon mat-list-icon (click)=\"rmSym(sym)\">clear</mat-icon>\n        <h4 mat-line> {{sym.symptom}}</h4>\n        <p mat-line> {{sym.intencity}} </p>\n        <p mat-line> {{sym.zone}}  </p>\n      </mat-list-item>\n      <mat-divider></mat-divider>\n    </mat-list>\n\n</section>\n  \n\n\n\n\n  \n\n\n\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-mainmenu></app-mainmenu>\n<style>\n  .rg{\n    text-align: left !important;\n  }\n</style>\n\n<div class=\"container\">\n  <mat-vertical-stepper [linear]=\"isLinear\" #stepper>\n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel *ngIf=\"consulta.symptoms.length==0\" >Agrega un sintoma para ver el listado de doctores</ng-template>\n      <button mat-button matStepperNext>Agrega Sintoma</button>\n      <ng-template matStepLabel *ngIf=\"consulta.symptoms.length>0\" >Listado de Doctores</ng-template>\n      <section id=\"doctors\">\n        <mat-list>\n          <mat-list-item *ngFor=\"let dc of doctors\">\n            <mat-icon mat-list-icon>account_circle</mat-icon>\n            <h4 mat-line>{{dc.name}}</h4>\n            <p mat-line> {{dc.title}} </p>\n            <mat-icon mat-list-icon (click)=\"open(content, dc);\" style=\"cursor: pointer;\">location_on</mat-icon>\n          </mat-list-item>\n          <mat-divider></mat-divider>\n        </mat-list>\n      </section>\n    </mat-step>\n    \n    <mat-step [stepControl]=\"secondFormGroup\">\n      <ng-template matStepLabel>Agregar Sintoma</ng-template>\n      <button mat-button matStepperPrevious>Ver Listado de Médicos</button>\n      <form  [formGroup]=\"symForm\">\n        <div class=\"row\" >\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Sintoma</mat-label>\n            <input matInput formControlName='symptom'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-4 col-sm-12 col-md-4\">\n          <mat-form-field>\n          <mat-label>Intencidad</mat-label>\n            <input matInput formControlName='intencity'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-3 col-sm-12 col-md-3\">\n          <mat-form-field>\n          <mat-label>zona</mat-label>\n            <input matInput formControlName='zone'  class=\"form-control\">\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1 col-sm-12 col-md-1\">\n          <button class=\"align-middle\" mat-mini-fab color=\"primary\" (click)=\"setSymptom();\"> + </button>\n        </div>\n      </div>\n      </form>  \n    </mat-step>\n\n\n    <mat-step [stepControl]=\"firstFormGroup\">\n    <form  [formGroup]=\"patientForm\">\n      <ng-template matStepLabel>Info de Paciente</ng-template>\n      <section id=\"patient\" style=\"padding: 20px;\">\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Paciente</mat-label>\n              <input matInput formControlName='name' class=\"form-control\">\n            </mat-form-field>\n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Edad</mat-label>\n              <input matInput formControlName='age' class=\"form-control\">\n            </mat-form-field>\n        \n            <mat-form-field appearance=\"fill\" style=\"width:90%;margin:auto;\">\n              <mat-label>Gender</mat-label>\n              <select matNativeControl formControlName='gender'>\n                <option value=\"Masculino\">Masculino</option>\n                <option value=\"Femenino\">Femenino</option>\n              </select>\n            </mat-form-field>\n      </section>\n      <button mat-flat-button color=\"accent\" (click)=\"setPatient();\">Actualizar</button>\n    </form>\n    </mat-step>\n\n  </mat-vertical-stepper>\n\n\n\n<section id=\"symptoms_box\" style=\"padding:0% 10%;margin:auto;\">\n\n    <mat-list>\n      <h3 mat-subheader>Sintomas</h3>\n      <mat-list-item *ngFor=\"let sym of consulta.symptoms\">\n        <mat-icon mat-list-icon (click)=\"rmSym(sym)\">clear</mat-icon>\n        <h4 mat-line> {{sym.symptom}}</h4>\n        <p mat-line> {{sym.intencity}} </p>\n        <p mat-line> {{sym.zone}}  </p>\n      </mat-list-item>\n      <mat-divider></mat-divider>\n    </mat-list>\n\n</section>\n  \n\n\n\n\n  \n\n\n\n</div>\n\n\n<ng-template #content let-modal>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">{{curdc.name}}</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <form>\n      <div class=\"form-group\">\n        <label for=\"dateOfBirth\">Date of birth</label>\n        <div class=\"input-group\">\n          <input id=\"dateOfBirth\" class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"dp\" ngbDatepicker #dp=\"ngbDatepicker\">\n          <div class=\"input-group-append\">\n            <button class=\"btn btn-outline-secondary calendar\" (click)=\"dp.toggle()\" type=\"button\"></button>\n          </div>\n        </div>\n      </div>\n    </form>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"modal.close('Save click')\">Save</button>\n  </div>\n</ng-template>");
 
 /***/ }),
 
@@ -509,20 +509,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/stepper */ "./node_modules/@angular/material/esm2015/stepper.js");
 /* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm2015/list.js");
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_auth_login_login_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/auth/login/login.component */ "./src/app/components/auth/login/login.component.ts");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _components_mainmenu_mainmenu_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/mainmenu/mainmenu.component */ "./src/app/components/mainmenu/mainmenu.component.ts");
-/* harmony import */ var _components_nuevaconsulta_nuevaconsulta_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/nuevaconsulta/nuevaconsulta.component */ "./src/app/components/nuevaconsulta/nuevaconsulta.component.ts");
-/* harmony import */ var _components_doctor_doctorhome_doctorhome_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/doctor/doctorhome/doctorhome.component */ "./src/app/components/doctor/doctorhome/doctorhome.component.ts");
-/* harmony import */ var _components_doctor_misconsultas_misconsultas_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/doctor/misconsultas/misconsultas.component */ "./src/app/components/doctor/misconsultas/misconsultas.component.ts");
-/* harmony import */ var ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ngx-bootstrap/tabs */ "./node_modules/ngx-bootstrap/tabs/fesm2015/ngx-bootstrap-tabs.js");
-/* harmony import */ var _components_patient_formconsulta_formconsulta_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/patient/formconsulta/formconsulta.component */ "./src/app/components/patient/formconsulta/formconsulta.component.ts");
-/* harmony import */ var _components_patient_myappointments_myappointments_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/patient/myappointments/myappointments.component */ "./src/app/components/patient/myappointments/myappointments.component.ts");
-/* harmony import */ var _components_forms_symptom_form_symptom_form_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/forms/symptom-form/symptom-form.component */ "./src/app/components/forms/symptom-form/symptom-form.component.ts");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm2015/snack-bar.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _components_auth_login_login_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/auth/login/login.component */ "./src/app/components/auth/login/login.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _components_mainmenu_mainmenu_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/mainmenu/mainmenu.component */ "./src/app/components/mainmenu/mainmenu.component.ts");
+/* harmony import */ var _components_nuevaconsulta_nuevaconsulta_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/nuevaconsulta/nuevaconsulta.component */ "./src/app/components/nuevaconsulta/nuevaconsulta.component.ts");
+/* harmony import */ var _components_doctor_doctorhome_doctorhome_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/doctor/doctorhome/doctorhome.component */ "./src/app/components/doctor/doctorhome/doctorhome.component.ts");
+/* harmony import */ var _components_doctor_misconsultas_misconsultas_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/doctor/misconsultas/misconsultas.component */ "./src/app/components/doctor/misconsultas/misconsultas.component.ts");
+/* harmony import */ var ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ngx-bootstrap/tabs */ "./node_modules/ngx-bootstrap/tabs/fesm2015/ngx-bootstrap-tabs.js");
+/* harmony import */ var _components_patient_formconsulta_formconsulta_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/patient/formconsulta/formconsulta.component */ "./src/app/components/patient/formconsulta/formconsulta.component.ts");
+/* harmony import */ var _components_patient_myappointments_myappointments_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/patient/myappointments/myappointments.component */ "./src/app/components/patient/myappointments/myappointments.component.ts");
+/* harmony import */ var _components_forms_symptom_form_symptom_form_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/forms/symptom-form/symptom-form.component */ "./src/app/components/forms/symptom-form/symptom-form.component.ts");
 
 
 
@@ -535,6 +536,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // MATERIAL COSITAS----------------------------------------------------
+
 
 
 
@@ -572,30 +574,30 @@ let AppModule = class AppModule {
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_24__["AppComponent"],
-            _components_auth_login_login_component__WEBPACK_IMPORTED_MODULE_25__["LoginComponent"],
-            _components_home_home_component__WEBPACK_IMPORTED_MODULE_28__["HomeComponent"],
-            _components_mainmenu_mainmenu_component__WEBPACK_IMPORTED_MODULE_29__["MainmenuComponent"],
-            _components_nuevaconsulta_nuevaconsulta_component__WEBPACK_IMPORTED_MODULE_30__["NuevaconsultaComponent"],
-            _components_doctor_doctorhome_doctorhome_component__WEBPACK_IMPORTED_MODULE_31__["DoctorhomeComponent"],
-            _components_doctor_misconsultas_misconsultas_component__WEBPACK_IMPORTED_MODULE_32__["MisconsultasComponent"],
-            _components_patient_formconsulta_formconsulta_component__WEBPACK_IMPORTED_MODULE_34__["FormconsultaComponent"],
-            _components_patient_myappointments_myappointments_component__WEBPACK_IMPORTED_MODULE_35__["MyappointmentsComponent"],
-            _components_forms_symptom_form_symptom_form_component__WEBPACK_IMPORTED_MODULE_36__["SymptomFormComponent"],
+            _app_component__WEBPACK_IMPORTED_MODULE_25__["AppComponent"],
+            _components_auth_login_login_component__WEBPACK_IMPORTED_MODULE_26__["LoginComponent"],
+            _components_home_home_component__WEBPACK_IMPORTED_MODULE_29__["HomeComponent"],
+            _components_mainmenu_mainmenu_component__WEBPACK_IMPORTED_MODULE_30__["MainmenuComponent"],
+            _components_nuevaconsulta_nuevaconsulta_component__WEBPACK_IMPORTED_MODULE_31__["NuevaconsultaComponent"],
+            _components_doctor_doctorhome_doctorhome_component__WEBPACK_IMPORTED_MODULE_32__["DoctorhomeComponent"],
+            _components_doctor_misconsultas_misconsultas_component__WEBPACK_IMPORTED_MODULE_33__["MisconsultasComponent"],
+            _components_patient_formconsulta_formconsulta_component__WEBPACK_IMPORTED_MODULE_35__["FormconsultaComponent"],
+            _components_patient_myappointments_myappointments_component__WEBPACK_IMPORTED_MODULE_36__["MyappointmentsComponent"],
+            _components_forms_symptom_form_symptom_form_component__WEBPACK_IMPORTED_MODULE_37__["SymptomFormComponent"],
         ],
         imports: [
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_23__["HttpClientModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_24__["HttpClientModule"],
             _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"],
             _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCollapseModule"],
             ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_6__["BsDropdownModule"].forRoot(),
             ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_7__["TooltipModule"].forRoot(),
             ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_8__["ModalModule"].forRoot(),
-            ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_33__["TabsModule"].forRoot(),
+            ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_34__["TabsModule"].forRoot(),
             _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
             angular_font_awesome__WEBPACK_IMPORTED_MODULE_5__["AngularFontAwesomeModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_26__["BrowserAnimationsModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_27__["BrowserAnimationsModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_28__["AppRoutingModule"],
             _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatExpansionModule"],
             _angular_material_slider__WEBPACK_IMPORTED_MODULE_11__["MatSliderModule"],
             _angular_material_card__WEBPACK_IMPORTED_MODULE_12__["MatCardModule"],
@@ -609,6 +611,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material_stepper__WEBPACK_IMPORTED_MODULE_20__["MatStepperModule"],
             _angular_material_list__WEBPACK_IMPORTED_MODULE_21__["MatListModule"],
             _angular_material_icon__WEBPACK_IMPORTED_MODULE_22__["MatIconModule"],
+            _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_23__["MatSnackBarModule"],
             _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MatMenuModule"],
             _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_9__["JwtModule"].forRoot({
                 config: {
@@ -619,7 +622,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             })
         ],
         providers: [],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_24__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_25__["AppComponent"]]
     })
 ], AppModule);
 
@@ -1042,17 +1045,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/consulta.service */ "./src/app/services/consulta.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm2015/snack-bar.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
+
 
 
 
 
 let NuevaconsultaComponent = class NuevaconsultaComponent {
-    constructor(consultaService) {
+    constructor(consultaService, snackBar, modalService) {
         this.consultaService = consultaService;
+        this.snackBar = snackBar;
+        this.modalService = modalService;
         this.isCollapsed = false;
         this.consulta = [];
         this.currConsulta = {};
         this.doctors = [];
+        this.curdc = {};
+    }
+    openSnackBar(message, action) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
     }
     ngOnInit() {
         this.symForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
@@ -1086,7 +1101,29 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
     onSubmit() {
         return;
     }
+    open(content, mydoctor) {
+        this.curdc = mydoctor;
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+    getDismissReason(reason) {
+        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["ModalDismissReasons"].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["ModalDismissReasons"].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return `with: ${reason}`;
+        }
+    }
     setConsulta() {
+        const appoinment = this.getCurrAppoinment();
+        if (appoinment.pk)
+            return;
         this.consultaService.setConsulta().subscribe(response => {
             localStorage.removeItem('appoinment');
             localStorage.setItem('appoinment', JSON.stringify(response));
@@ -1113,6 +1150,7 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
             this.consulta.symptoms.push(newsin);
             this.symForm.reset();
             this.getDoctors();
+            this.openSnackBar('Info actualizada correctamente.', 'x');
         });
     }
     rmSym(thSym) {
@@ -1120,6 +1158,7 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
             const inx = this.consulta.symptoms.indexOf(thSym);
             this.consulta.symptoms.splice(inx, 1);
             this.getDoctors();
+            this.openSnackBar('Info actualizada correctamente.', 'x');
         });
     }
     setPatient() {
@@ -1131,11 +1170,14 @@ let NuevaconsultaComponent = class NuevaconsultaComponent {
         };
         this.consultaService.setPatient(appoint.pk, infop).subscribe(response => {
             console.log(response);
+            this.openSnackBar('Info actualizada correctamente.', 'x');
         });
     }
 };
 NuevaconsultaComponent.ctorParameters = () => [
-    { type: _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__["ConsultaService"] }
+    { type: _services_consulta_service__WEBPACK_IMPORTED_MODULE_2__["ConsultaService"] },
+    { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"] }
 ];
 NuevaconsultaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
